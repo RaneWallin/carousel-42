@@ -1,0 +1,195 @@
+/*------------------------------------*\
+RESET
+\*------------------------------------*/
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0b1 | 201101
+NOTE:WORK IN PROGRESS
+USE WITH CAUTION AND TEST WITH ABANDON */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: ’’;
+  content: none;
+}
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.carousel {
+  margin: 50px auto;
+  display: flex;
+}
+.hidden-img {
+  display: none;
+}
+.active-img {
+  display: inline-block;
+  margin: 0;
+  max-height: 100%;
+  max-width: 100%;
+}
+.flank-img {
+  max-height: 75%;
+  max-width: 100%;
+  display: inline-block;
+  margin-top: 35px;
+}
+.left-img {
+  align-self: flex-start;
+  transform: perspective(1400px) rotate3d(0, 1, 0, -45deg);
+}
+.right-img {
+  align-self: flex-start;
+  transform: perspective(1400px) rotate3d(0, 1, 0, 45deg);
+}
+.carousel-arrow {
+  font-size: 50px;
+  color: white;
+  height: 75px;
+  width: 75px;
+  margin: 0 15px;
+  align-self: center;
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 5;
+}
+.active-div,
+.left-div,
+.right-div {
+  display: flex;
+  height: 300px;
+  width: 400px;
+  align-content: baseline;
+}
+.left-div {
+  justify-content: flex-end;
+}
+.right-div {
+  justify-content: flex-start;
+}
+.active-div {
+  justify-content: center;
+}
+.storage-div {
+  display: none;
+}
