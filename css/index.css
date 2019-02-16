@@ -136,6 +136,7 @@ table {
 .carousel {
   margin: 50px auto;
   display: flex;
+  align-items: center;
 }
 .hidden-img {
   display: none;
@@ -163,8 +164,8 @@ table {
 .carousel-arrow {
   font-size: 50px;
   color: white;
-  height: 75px;
-  width: 75px;
+  height: 50px;
+  width: 50px;
   margin: 0 15px;
   align-self: center;
   text-align: center;
