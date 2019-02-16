@@ -100,7 +100,7 @@ class Carousel {
         }
     }
     changeImage(arrow) {
-        let nextIndex, rightImage, leftImage, leftCoord, rightCoord, activeCoord;
+        let nextIndex, rightImage, leftImage, leftCoord, rightCoord, activeCoord, nextImage;
         const whichArrow = arrow.dataset.arrowType;
         const currentImage = document.querySelector(".active-img");
         const currentIndex = Number(currentImage.dataset.cimage);
@@ -116,11 +116,16 @@ class Carousel {
 
         switch(whichArrow) {
             case "left-arrow":
+                const rightIndex = rightImage.dataset.cimage;
+                nextIndex = this.findNextIndex(rightIndex, RIGHT);
+                nextImage =
+                    this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
+
                 this.storageDiv.appendChild(leftImage);
                 leftImage.classList.remove("left-img", "flank-img");
                 leftImage.classList.add("hidden-img");
 
-                TweenMax.to(currentImage, .3, {
+                TweenMax.to(currentImage, .1, {
                     x: -(activeCoord.x - leftCoord.x),
                     //rotationY: "-45deg",
                     onComplete: () => {
@@ -132,53 +137,54 @@ class Carousel {
                             className: "left-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
-                                TweenMax.to(rightImage, .3, {
-                                    x: -(rightCoord.x - activeCoord.x),
-                                    //rotationY: "-45deg",
-                                    onComplete: () => {
-                                        //
-                                        //TweenMax.set(currentImage, { clearProps:"all"});
-                                        this.activeDiv.appendChild(rightImage);
-                                        TweenMax.set(rightImage, { clearProps: "all" });
-                                        TweenMax.to(rightImage, .2, {
-                                            className: "active-img",
-                                             onComplete: () => {
-                                                 const rightIndex = rightImage.dataset.cimage;
-                                                 nextIndex = this.findNextIndex(rightIndex, RIGHT);
-                                                 const nextImage =
-                                                     this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
-                                                ////////////////////////
-                                                 currentImage.classList.remove("hidden-img");
-                                                 TweenMax.to(nextImage, .1, {
-                                                     x: -(rightCoord.x),
-                                                     //rotationY: "-45deg",
-                                                     onComplete: () => {
-                                                         //
-                                                         //TweenMax.set(currentImage, { clearProps:"all"});
-                                                         this.rightDiv.appendChild(nextImage);
-                                                         TweenMax.set(nextImage, { clearProps: "all" });
-                                                         TweenMax.to(nextImage, .2, {
-                                                             className: "right-img flank-img",
-                                                         })
-                                                     }
-                                                 });
-                                             }
-                                        })
-                                    }
-                                });
                             }
                         })
                         //currentImage.classList.remove("active-img");
                         //currentImage.classList.add("left-img", "flank-img");
                     }
                 });
+
+                TweenMax.to(rightImage, .2, {
+                    x: -(rightCoord.x - activeCoord.x),
+                    //rotationY: "-45deg",
+                    onComplete: () => {
+                        //
+                        //TweenMax.set(currentImage, { clearProps:"all"});
+                        this.activeDiv.appendChild(rightImage);
+                        TweenMax.set(rightImage, { clearProps: "all" });
+                        TweenMax.to(rightImage, .2, {
+                            className: "active-img",
+                        })
+                    }
+                });
+
+                TweenMax.to(nextImage, .1, {
+                    x: -(rightCoord.x),
+                    //rotationY: "-45deg",
+                    onComplete: () => {
+                        //
+                        //TweenMax.set(currentImage, { clearProps:"all"});
+                        this.rightDiv.appendChild(nextImage);
+                        TweenMax.set(nextImage, { clearProps: "all" });
+                        TweenMax.to(nextImage, .5, {
+                            className: "right-img flank-img",
+                        })
+                    }
+                });
                 break;
             case "right-arrow":
+                const leftIndex = leftImage.dataset.cimage;
+                nextIndex = this.findNextIndex(leftIndex, LEFT);
+                nextImage =
+                    this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
+                ////////////////////////
+                this.leftDiv.appendChild(nextImage);
+
                 this.storageDiv.appendChild(rightImage);
                 rightImage.classList.remove("left-img", "flank-img");
                 rightImage.classList.add("hidden-img");
 
-                TweenMax.to(currentImage, .3, {
+                TweenMax.to(currentImage, .1, {
                     x: (rightCoord.x - activeCoord.x),
                     //rotationY: "-45deg",
                     onComplete: () => {
@@ -190,44 +196,40 @@ class Carousel {
                             className: "right-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
-                                TweenMax.to(leftImage, .3, {
-                                    x: (activeCoord.x - leftCoord.x),
-                                    //rotationY: "-45deg",
-                                    onComplete: () => {
-                                        //
-                                        //TweenMax.set(currentImage, { clearProps:"all"});
-                                        this.activeDiv.appendChild(leftImage);
-                                        TweenMax.set(leftImage, { clearProps: "all" });
-                                        TweenMax.to(leftImage, .2, {
-                                            className: "active-img",
-                                            onComplete: () => {
-                                                const leftIndex = leftImage.dataset.cimage;
-                                                nextIndex = this.findNextIndex(leftIndex, LEFT);
-                                                const nextImage =
-                                                    this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
-                                                ////////////////////////
-                                                nextImage.classList.remove("hidden-img");
-                                                TweenMax.to(nextImage, .1, {
-                                                    x: (rightCoord.x),
-                                                    //rotationY: "-45deg",
-                                                    onComplete: () => {
-                                                        //
-                                                        //TweenMax.set(currentImage, { clearProps:"all"});
-                                                        this.leftDiv.appendChild(nextImage);
-                                                        TweenMax.set(nextImage, { clearProps: "all" });
-                                                        TweenMax.to(nextImage, .1, {
-                                                            className: "left-img flank-img",
-                                                        })
-                                                    }
-                                                });
-                                            }
-                                        })
-                                    }
-                                });
                             }
                         })
                         //currentImage.classList.remove("active-img");
                         //currentImage.classList.add("left-img", "flank-img");
+                    }
+                });
+
+                TweenMax.to(leftImage, .2, {
+                    x: (activeCoord.x - leftCoord.x),
+                    //rotationY: "-45deg",
+                    onComplete: () => {
+                        //
+                        //TweenMax.set(currentImage, { clearProps:"all"});
+                        this.activeDiv.appendChild(leftImage);
+                        TweenMax.set(leftImage, { clearProps: "all" });
+                        TweenMax.to(leftImage, .2, {
+                            className: "active-img",
+                        })
+                    }
+                });
+
+                //nextImage.classList.remove("hidden-img");
+                TweenMax.to(nextImage, .1, {
+                    x: (rightCoord.x),
+                    //rotationY: "-45deg",
+                    onComplete: () => {
+                        //
+                        //TweenMax.set(currentImage, { clearProps:"all"});
+                        //this.leftDiv.appendChild(nextImage);
+                        //nextImage.classList.remove("hidden-img");
+                        TweenMax.set(nextImage, { clearProps: "all" });
+                        TweenMax.to(nextImage, .5, {
+                            className: "left-img flank-img",
+                        })
                     }
                 });
                 break;
