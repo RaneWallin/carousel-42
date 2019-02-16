@@ -176,7 +176,64 @@ class Carousel {
                 });
                 break;
             case "right-arrow":
-                console.log("right");
+                this.storageDiv.appendChild(rightImage);
+                rightImage.classList.remove("left-img", "flank-img");
+                rightImage.classList.add("hidden-img");
+                //console.log(leftCoord);
+                //console.log(activeCoord);
+
+                TweenMax.to(currentImage, .05, {
+                    x: (activeCoord.x - rightCoord.x)/2,
+                    //rotationY: "-45deg",
+                    onComplete: () => {
+                        //
+                        //TweenMax.set(currentImage, { clearProps:"all"});
+                        this.rightDiv.appendChild(currentImage);
+                        TweenMax.set(currentImage, { clearProps: "all" });
+                        TweenMax.to(currentImage, .05, {
+                            className: "right-img flank-img",
+                            onComplete: () => {
+                                currentImage.classList.remove("active-img");
+                                TweenMax.to(leftImage, .05, {
+                                    x: (leftCoord.x - activeCoord.x)/2,
+                                    //rotationY: "-45deg",
+                                    onComplete: () => {
+                                        //
+                                        //TweenMax.set(currentImage, { clearProps:"all"});
+                                        this.activeDiv.appendChild(leftImage);
+                                        TweenMax.set(leftImage, { clearProps: "all" });
+                                        TweenMax.to(leftImage, .05, {
+                                            className: "active-img",
+                                            onComplete: () => {
+                                                const leftIndex = leftImage.dataset.cimage;
+                                                nextIndex = this.findNextIndex(leftIndex, LEFT);
+                                                const nextImage =
+                                                    this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
+                                                ////////////////////////
+                                                nextImage.classList.remove("hidden-img");
+                                                TweenMax.to(nextImage, .05, {
+                                                    x: (leftCoord.x)/2,
+                                                    //rotationY: "-45deg",
+                                                    onComplete: () => {
+                                                        //
+                                                        //TweenMax.set(currentImage, { clearProps:"all"});
+                                                        this.leftDiv.appendChild(nextImage);
+                                                        TweenMax.set(nextImage, { clearProps: "all" });
+                                                        TweenMax.to(nextImage, .05, {
+                                                            className: "left-img flank-img",
+                                                        })
+                                                    }
+                                                });
+                                            }
+                                        })
+                                    }
+                                });
+                            }
+                        })
+                        //currentImage.classList.remove("active-img");
+                        //currentImage.classList.add("left-img", "flank-img");
+                    }
+                });
                 break;
         }
     }
