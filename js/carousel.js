@@ -190,8 +190,8 @@ class Carousel {
                             className: "right-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
-                                TweenMax.to(leftImage, .3, {
-                                    x: (leftCoord.x - activeCoord.x)/2,
+                                TweenMax.to(leftImage, .1, {
+                                    x: (activeCoord.x - leftCoord.x)/2,
                                     //rotationY: "-45deg",
                                     onComplete: () => {
                                         //
