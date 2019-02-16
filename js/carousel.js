@@ -128,7 +128,7 @@ class Carousel {
                         //TweenMax.set(currentImage, { clearProps:"all"});
                         this.leftDiv.appendChild(currentImage);
                         TweenMax.set(currentImage, { clearProps: "all" });
-                        TweenMax.to(currentImage, .1, {
+                        TweenMax.to(currentImage, .2, {
                             className: "left-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
@@ -157,7 +157,7 @@ class Carousel {
                                                          //TweenMax.set(currentImage, { clearProps:"all"});
                                                          this.rightDiv.appendChild(nextImage);
                                                          TweenMax.set(nextImage, { clearProps: "all" });
-                                                         TweenMax.to(nextImage, .1, {
+                                                         TweenMax.to(nextImage, .2, {
                                                              className: "right-img flank-img",
                                                          })
                                                      }
