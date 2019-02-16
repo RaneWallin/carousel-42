@@ -119,10 +119,8 @@ class Carousel {
                 this.storageDiv.appendChild(leftImage);
                 leftImage.classList.remove("left-img", "flank-img");
                 leftImage.classList.add("hidden-img");
-                console.log(leftCoord);
-                console.log(activeCoord);
 
-                TweenMax.to(currentImage, .1, {
+                TweenMax.to(currentImage, .3, {
                     x: -(activeCoord.x - leftCoord.x)/2,
                     //rotationY: "-45deg",
                     onComplete: () => {
@@ -134,7 +132,7 @@ class Carousel {
                             className: "left-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
-                                TweenMax.to(rightImage, .1, {
+                                TweenMax.to(rightImage, .3, {
                                     x: -(rightCoord.x - activeCoord.x)/2,
                                     //rotationY: "-45deg",
                                     onComplete: () => {
@@ -179,11 +177,9 @@ class Carousel {
                 this.storageDiv.appendChild(rightImage);
                 rightImage.classList.remove("left-img", "flank-img");
                 rightImage.classList.add("hidden-img");
-                //console.log(leftCoord);
-                //console.log(activeCoord);
 
-                TweenMax.to(currentImage, .1, {
-                    x: (activeCoord.x - rightCoord.x)/2,
+                TweenMax.to(currentImage, .3, {
+                    x: (rightCoord.x - activeCoord.x)/2,
                     //rotationY: "-45deg",
                     onComplete: () => {
                         //
@@ -194,7 +190,7 @@ class Carousel {
                             className: "right-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
-                                TweenMax.to(leftImage, .1, {
+                                TweenMax.to(leftImage, .3, {
                                     x: (leftCoord.x - activeCoord.x)/2,
                                     //rotationY: "-45deg",
                                     onComplete: () => {
@@ -212,7 +208,7 @@ class Carousel {
                                                 ////////////////////////
                                                 nextImage.classList.remove("hidden-img");
                                                 TweenMax.to(nextImage, .1, {
-                                                    x: (leftCoord.x)/2,
+                                                    x: (rightCoord.x)/2,
                                                     //rotationY: "-45deg",
                                                     onComplete: () => {
                                                         //
