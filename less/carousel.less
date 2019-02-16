@@ -1,40 +1,40 @@
-.carousel {
+.carousel42 {
   margin: 50px auto;
   display: flex;
   align-items: center;
 }
 
-.hidden-img {
+.c42-hidden-img {
   display: none;
 }
 
-.active-img {
+.c42-active-img {
   display: inline-block;
   margin: 0;
   max-height: 100%;
   max-width: 100%;
   //height: 0;
 }
-.flank-img {
+.c42-flank-img {
   max-height: 75%;
   max-width: 100%;
   //height: 0;
   display: inline-block;
   margin-top: 35px;
 }
-.left-img {
+.c42-left-img {
   //border: 5px solid black;
   align-self: flex-start;
   transform: perspective(@perspective)
             rotate3d(0, 1, 0, -45deg);
 }
-.right-img {
+.c42-right-img {
   align-self: flex-start;
   transform: perspective(@perspective)
   rotate3d(0, 1, 0, 45deg);
 }
 
-.carousel-arrow {
+.c42-arrow {
   font-size: 50px;
   color: white;
   height: 50px;
@@ -48,27 +48,27 @@
   z-index: 5;
 }
 
-.active-div, .left-div, .right-div {
+.c42-active-div, .c42-left-div, .c42-right-div {
   //border: 3px solid black;
   display: flex;
   height: 300px;
   width: 400px;
   align-content: baseline;
 }
-.left-div {
+.c42-left-div {
   justify-content: flex-end;
   //width: 200px;
 }
 
-.right-div {
+.c42-right-div {
   justify-content: flex-start;
   //width: 200px;
 }
 
-.active-div {
+.c42-active-div {
   justify-content: center;
 }
 
-.storage-div {
+.c42-storage-div {
   display: none;
 }

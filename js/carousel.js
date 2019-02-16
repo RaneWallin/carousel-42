@@ -3,9 +3,9 @@ const leftArrowText = "<";
 const RIGHT = 1;
 const LEFT = 0;
 
-class Carousel {
+class Carousel42 {
     constructor() {
-        this.carouselElement = document.querySelector(".carousel");
+        this.carouselElement = document.querySelector(".carousel42");
 
         //this.images = this.carouselElement.querySelectorAll("img");
 
@@ -40,9 +40,9 @@ class Carousel {
         this.rightArrow.innerText = rightArrowText;
 
         // add arrow classes and data
-        this.leftArrow.classList.add("carousel-arrow");
+        this.leftArrow.classList.add("c42-arrow");
         this.leftArrow.dataset.arrowType = "left-arrow";
-        this.rightArrow.classList.add("carousel-arrow");
+        this.rightArrow.classList.add("c42-arrow");
         this.rightArrow.dataset.arrowType = "right-arrow";
 
         this.carouselElement.appendChild(this.leftArrow);
@@ -63,10 +63,10 @@ class Carousel {
         this.rightDiv = document.createElement("div");
         this.storageDiv = document.createElement("div");
 
-        this.leftDiv.classList.add("left-div");
-        this.activeDiv.classList.add("active-div");
-        this.rightDiv.classList.add("right-div");
-        this.storageDiv.classList.add("storage-div");
+        this.leftDiv.classList.add("c42-left-div");
+        this.activeDiv.classList.add("c42-active-div");
+        this.rightDiv.classList.add("c42-right-div");
+        this.storageDiv.classList.add("c42-storage-div");
 
         this.activeX = this.activeDiv.getBoundingClientRect().x;
         this.leftX = this.leftDiv.getBoundingClientRect().x;
@@ -85,16 +85,16 @@ class Carousel {
         for(let i = 0; i < images.length; i++){
             images[i].dataset.cimage = `${i}`;
             if (i === 0) {
-                images[i].classList.add("left-img", "flank-img");
+                images[i].classList.add("c42-left-img", "c42-flank-img");
                 this.leftDiv.appendChild(images[i]);
             } else if (i === 1) {
-                images[i].classList.add("active-img");
+                images[i].classList.add("c42-active-img");
                 this.activeDiv.appendChild(images[i]);
             } else if (i === 2) {
-                images[i].classList.add("right-img", "flank-img");
+                images[i].classList.add("c42-right-img", "c42-flank-img");
                 this.rightDiv.appendChild(images[i]);
             } else {
-                images[i].classList.add("hidden-img");
+                images[i].classList.add("c42-hidden-img");
                 this.storageDiv.appendChild(images[i]);
             }
         }
@@ -102,7 +102,7 @@ class Carousel {
     changeImage(arrow) {
         let nextIndex, rightImage, leftImage, leftCoord, rightCoord, activeCoord, nextImage;
         const whichArrow = arrow.dataset.arrowType;
-        const currentImage = document.querySelector(".active-img");
+        const currentImage = document.querySelector(".c42-active-img");
         const currentIndex = Number(currentImage.dataset.cimage);
 
         nextIndex = this.findNextIndex(currentIndex, RIGHT);
@@ -122,8 +122,8 @@ class Carousel {
                     this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
 
                 this.storageDiv.appendChild(leftImage);
-                leftImage.classList.remove("left-img", "flank-img");
-                leftImage.classList.add("hidden-img");
+                leftImage.classList.remove("c42-left-img", "c42-flank-img");
+                leftImage.classList.add("c42-hidden-img");
 
                 TweenMax.to(currentImage, .2, {
                     x: -(activeCoord.x - leftCoord.x),
@@ -134,26 +134,23 @@ class Carousel {
                         this.leftDiv.appendChild(currentImage);
                         TweenMax.set(currentImage, { clearProps: "all" });
                         TweenMax.to(currentImage, .4, {
-                            className: "left-img flank-img",
+                            className: "c42-left-img c42-flank-img",
                             onComplete: () => {
-                                currentImage.classList.remove("active-img");
+                                currentImage.classList.remove("c42-active-img");
                             }
                         })
-                        //currentImage.classList.remove("active-img");
-                        //currentImage.classList.add("left-img", "flank-img");
                     }
                 });
 
                 TweenMax.to(rightImage, .3, {
                     x: -(rightCoord.x - activeCoord.x),
-                    //rotationY: "-45deg",
                     onComplete: () => {
                         //
                         //TweenMax.set(currentImage, { clearProps:"all"});
                         this.activeDiv.appendChild(rightImage);
                         TweenMax.set(rightImage, { clearProps: "all" });
                         TweenMax.to(rightImage, .2, {
-                            className: "active-img",
+                            className: "c42-active-img",
                         })
                     }
                 });
@@ -167,7 +164,7 @@ class Carousel {
                         this.rightDiv.appendChild(nextImage);
                         TweenMax.set(nextImage, { clearProps: "all" });
                         TweenMax.to(nextImage, .5, {
-                            className: "right-img flank-img",
+                            className: "c42-right-img c42-flank-img",
                         })
                     }
                 });
@@ -181,8 +178,8 @@ class Carousel {
                 this.leftDiv.appendChild(nextImage);
 
                 this.storageDiv.appendChild(rightImage);
-                rightImage.classList.remove("left-img", "flank-img");
-                rightImage.classList.add("hidden-img");
+                rightImage.classList.remove("c42-left-img", "c42-flank-img");
+                rightImage.classList.add("c42-hidden-img");
 
                 TweenMax.to(currentImage, .2, {
                     x: (rightCoord.x - activeCoord.x),
@@ -193,9 +190,9 @@ class Carousel {
                         this.rightDiv.appendChild(currentImage);
                         TweenMax.set(currentImage, { clearProps: "all" });
                         TweenMax.to(currentImage, .4, {
-                            className: "right-img flank-img",
+                            className: "c42-right-img c42-flank-img",
                             onComplete: () => {
-                                currentImage.classList.remove("active-img");
+                                currentImage.classList.remove("c42-active-img");
                             }
                         })
                         //currentImage.classList.remove("active-img");
@@ -212,7 +209,7 @@ class Carousel {
                         this.activeDiv.appendChild(leftImage);
                         TweenMax.set(leftImage, { clearProps: "all" });
                         TweenMax.to(leftImage, .2, {
-                            className: "active-img",
+                            className: "c42-active-img",
                         })
                     }
                 });
@@ -228,7 +225,7 @@ class Carousel {
                         //nextImage.classList.remove("hidden-img");
                         TweenMax.set(nextImage, { clearProps: "all" });
                         TweenMax.to(nextImage, .5, {
-                            className: "left-img flank-img",
+                            className: "c42-left-img c42-flank-img",
                         })
                     }
                 });
@@ -264,4 +261,4 @@ class Carousel {
     }
 }
 
-const carousel = new Carousel();
+const carousel42 = new Carousel42();
