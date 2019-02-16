@@ -122,7 +122,7 @@ class Carousel {
                 console.log(leftCoord);
                 console.log(activeCoord);
 
-                TweenMax.to(currentImage, .05, {
+                TweenMax.to(currentImage, .1, {
                     x: -(activeCoord.x - leftCoord.x)/2,
                     //rotationY: "-45deg",
                     onComplete: () => {
@@ -130,11 +130,11 @@ class Carousel {
                         //TweenMax.set(currentImage, { clearProps:"all"});
                         this.leftDiv.appendChild(currentImage);
                         TweenMax.set(currentImage, { clearProps: "all" });
-                        TweenMax.to(currentImage, .05, {
+                        TweenMax.to(currentImage, .1, {
                             className: "left-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
-                                TweenMax.to(rightImage, .05, {
+                                TweenMax.to(rightImage, .1, {
                                     x: -(rightCoord.x - activeCoord.x)/2,
                                     //rotationY: "-45deg",
                                     onComplete: () => {
@@ -142,7 +142,7 @@ class Carousel {
                                         //TweenMax.set(currentImage, { clearProps:"all"});
                                         this.activeDiv.appendChild(rightImage);
                                         TweenMax.set(rightImage, { clearProps: "all" });
-                                        TweenMax.to(rightImage, .05, {
+                                        TweenMax.to(rightImage, .1, {
                                             className: "active-img",
                                              onComplete: () => {
                                                  const rightIndex = rightImage.dataset.cimage;
@@ -151,7 +151,7 @@ class Carousel {
                                                      this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
                                                 ////////////////////////
                                                  currentImage.classList.remove("hidden-img");
-                                                 TweenMax.to(nextImage, .05, {
+                                                 TweenMax.to(nextImage, .1, {
                                                      x: -(rightCoord.x)/2,
                                                      //rotationY: "-45deg",
                                                      onComplete: () => {
@@ -159,7 +159,7 @@ class Carousel {
                                                          //TweenMax.set(currentImage, { clearProps:"all"});
                                                          this.rightDiv.appendChild(nextImage);
                                                          TweenMax.set(nextImage, { clearProps: "all" });
-                                                         TweenMax.to(nextImage, .05, {
+                                                         TweenMax.to(nextImage, .1, {
                                                              className: "right-img flank-img",
                                                          })
                                                      }
@@ -182,7 +182,7 @@ class Carousel {
                 //console.log(leftCoord);
                 //console.log(activeCoord);
 
-                TweenMax.to(currentImage, .05, {
+                TweenMax.to(currentImage, .1, {
                     x: (activeCoord.x - rightCoord.x)/2,
                     //rotationY: "-45deg",
                     onComplete: () => {
@@ -190,11 +190,11 @@ class Carousel {
                         //TweenMax.set(currentImage, { clearProps:"all"});
                         this.rightDiv.appendChild(currentImage);
                         TweenMax.set(currentImage, { clearProps: "all" });
-                        TweenMax.to(currentImage, .05, {
+                        TweenMax.to(currentImage, .1, {
                             className: "right-img flank-img",
                             onComplete: () => {
                                 currentImage.classList.remove("active-img");
-                                TweenMax.to(leftImage, .05, {
+                                TweenMax.to(leftImage, .1, {
                                     x: (leftCoord.x - activeCoord.x)/2,
                                     //rotationY: "-45deg",
                                     onComplete: () => {
@@ -202,7 +202,7 @@ class Carousel {
                                         //TweenMax.set(currentImage, { clearProps:"all"});
                                         this.activeDiv.appendChild(leftImage);
                                         TweenMax.set(leftImage, { clearProps: "all" });
-                                        TweenMax.to(leftImage, .05, {
+                                        TweenMax.to(leftImage, .1, {
                                             className: "active-img",
                                             onComplete: () => {
                                                 const leftIndex = leftImage.dataset.cimage;
@@ -211,7 +211,7 @@ class Carousel {
                                                     this.storageDiv.querySelector(`img[data-cimage="${nextIndex}"]`);
                                                 ////////////////////////
                                                 nextImage.classList.remove("hidden-img");
-                                                TweenMax.to(nextImage, .05, {
+                                                TweenMax.to(nextImage, .1, {
                                                     x: (leftCoord.x)/2,
                                                     //rotationY: "-45deg",
                                                     onComplete: () => {
@@ -219,7 +219,7 @@ class Carousel {
                                                         //TweenMax.set(currentImage, { clearProps:"all"});
                                                         this.leftDiv.appendChild(nextImage);
                                                         TweenMax.set(nextImage, { clearProps: "all" });
-                                                        TweenMax.to(nextImage, .05, {
+                                                        TweenMax.to(nextImage, .1, {
                                                             className: "left-img flank-img",
                                                         })
                                                     }
